@@ -19,8 +19,22 @@ module PhotoApp
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+module Kernel
+  def gem_with_pg_fix(dep, *reqs)
+    if dep == "pg" && reqs == ["~> 0.15"]
+      reqs = ["~> 1.0"]
+    end
+    gem_without_pg_fix(dep, *reqs)
+  end
+
+  alias_method_chain :gem, :pg_fix
+end
+# pg 1.0 gem has removed these constants, but 4.2 ActiveRecord still expects them
+
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    config.assets.initialize_on_precompile = false
   end
 end
+    
