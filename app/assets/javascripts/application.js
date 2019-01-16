@@ -12,5 +12,20 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require twitter/bootstrap
 //= require_tree .
+
+$(document).ready(function(){
+  $('#stock-lookup-form').on('ajax:complete', function(event, data, status){
+    $('#results').html(data.responseText)
+  })
+})
+
+
+var hide_spinner = function(){
+  $('#spinner').hide();
+}
+
+var show_spinner = function(){
+  $('#spinner').show();
+}

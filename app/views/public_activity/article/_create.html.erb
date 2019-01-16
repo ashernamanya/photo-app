@@ -1,0 +1,13 @@
+<html lang="en">
+  <head>
+     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+<p align="center">Posted a new Article to </p>
+
+<p align="center"><% if activity.trackable %></p>
+<p align="center"><%= link_to activity.trackable.user.username, activity.trackable %>'s Wall</p>
+<% else %>
+  which has since been removed
+<% end %>

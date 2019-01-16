@@ -1,0 +1,60 @@
+<html lang="en">
+  <head>
+     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+<% obj.each do |article| %>
+
+<div class="row">
+
+<div class="col-xs-16 col-xs-offset-1">
+
+<div class="well well-lg">
+
+<div class="article-tittle">
+
+<%= link_to article.tittle, article_path(article) %>
+
+</div>
+
+<div class="article-body">
+
+<%= truncate(article.description, length: 100, width: 300) %>
+
+<div class="article-meta-details">
+
+<small> Published by: <%= article.user.try(:username) if article.user%>,
+
+<%#= time_ago_in_words(article.created_at) %> ago,
+
+last updated: <%#= time_ago_in_words(article.updated_at) %> ago</small>
+
+</div>
+
+</div>
+
+<% if signed_in? && current_user == article.user %>
+
+<div class="article-actions">
+
+<%= link_to "Edit this article", edit_article_path(article), class: "btn btn-xs btn-primary" %>
+
+<%= link_to "Delete this article", article_path(article), method: :delete,
+
+data: { confirm: "Are you sure you want to delete the article?"},
+
+class: "btn btn-xs btn-danger" %>
+
+</div>
+
+<% end %>
+
+</div>
+
+</div>
+
+</div>
+
+<% end %>

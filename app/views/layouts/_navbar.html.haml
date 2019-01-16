@@ -1,0 +1,23 @@
+ - if logged_in?
+          %li
+            .dropdown.notification-dropdown
+              %button.btn.btn-default.dropdown-toggle{ type: 'button', id: 'dropdownMenu1', data: { toggle: 'dropdown' }, 'aria-haspopup': true, 'aria-expanded': true }
+                5
+                %span.glyphicon.glyphicon-flag
+              %ul.dropdown-menu{ 'aria-labelledby': 'dropdownMenu1' }
+                %li.dropdown-header.text-center Notifications
+                %li
+                  %a{ href: '#' } Notification 1
+                %li
+                  %a{ href: '#' } Notification 2
+          %li
+            = link_to "New Post", new_post_path
+
+#Reload Photogram and you’ll see a pretty basic demo of what we’re going to have at the end of the day. Fix up the styling quickly by adding the following SCSS to your app/assets/stylesheets/application.scss file:
+
+.notification-dropdown {
+  margin-top: 10px;
+  button {
+    border: none;
+  }
+}

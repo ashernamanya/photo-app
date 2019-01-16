@@ -1,0 +1,26 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+<h2 align="center"> Active Members</h2>
+<div class="container">
+<div align="center">
+  <ul class="listing">
+
+<div class="row">
+
+<div class="well col-md-4 col-md-offset-4">
+<% @user.each do |user| %>
+<li><%= gravatar_for user, size: 100 %></li>
+</br>
+<%= link_to user.username, user_path(user) %>
+<h4 align ="center"><%= link_to ' Send Message', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%></h4>
+</container>
+
+<% end%>
+</div>
+</div>
+</div>

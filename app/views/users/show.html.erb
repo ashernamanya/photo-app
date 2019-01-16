@@ -1,0 +1,71 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: green;
+  font-size: 18px;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+
+</style>
+<h5 style="text-align:center"><strong><%= @user.username%></strong>'s Profile</h5>
+<div class="card">
+  <%#= gravatar_for @user, size: 100 %>
+  <h6><strong>UserName:</strong>
+  <p class="title"><%= @user.username %></p></h6>
+  <p><dt><strong>Last Name:</strong></dt> 
+  <p><dt><strong>Country:</strong></dt> 
+  <dd><%= @user.country %></dd> 
+  <dt><strong>Email:</strong></dt> 
+  <dd><%= @user.email %></dd> 
+</dl></p>
+<% if current_user.following?(@user) %>
+<h4 align ="center"><%= button_to 'unfollow', relationship_path(user_id: @user.id), method: :delete, :class =>'btn-btn-default-button'%>
+                           
+  <%else%>
+<h4 align ="center"><%= button_to 'Follow', relationships_path(user_id: @user.id), :class => 'btn-btn-primary' %>
+  <% end %>   
+  </hr></br>
+  <%= render partial: 'shared/stats'%>
+</div>
+<h4 align="center"><%= @user.username%>'s Articles</h4>
+<div class="center">
+ 
+<%#= will_paginate @user_articles %>
+
+</div>
+
+<%= render 'articles/article', obj: @user_articles %>
+
+<div class="center">
+
+<%#= will_paginate @user_articles %>
+</div>
+
+<script src="/assets/bootstrap.min.js"></script>
+<link href="/assets/bootstrap.min.css" media="all" rel="stylesheet" />

@@ -1,0 +1,16 @@
+<html lang="en">
+  <head>
+     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    </hr>
+
+
+
+<div>
+  <h6>Comment by <%= comment.name %></h6>
+  <p class="comment"><%= comment.body %></p>
+ <p> Posted </p> <%= time_ago_in_words(comment.created_at) %> ago, last updated: <%= time_ago_in_words(comment.updated_at) %> ago
+ 
+</div>

@@ -1,0 +1,249 @@
+
+.article-actions {
+
+border-top: 1px solid #eaeaea;
+
+padding-top: 5px;
+
+}
+
+.description {
+
+margin-top: 0;
+
+}
+.article-body {
+
+border-top: 1px solid #eaeaea;
+
+padding-top: 20px;
+
+padding-bottom: 20px;
+
+}
+
+
+.article-meta-details {
+
+border-top: 1px solid #eaeaea;
+
+margin-top: 15px;
+
+}
+
+
+.badge {
+
+background-color: red;
+
+text-transform: uppercase;
+
+letter-spacing: -1px;
+
+font-weight: bold;
+
+}
+
+.user-name {
+
+padding: 0 !important ;
+
+padding-left: 5px;
+
+padding-top: 15px !important;
+
+text-align: center;
+
+a {
+
+color: black !important;
+
+margin: 0 !important;
+
+padding: 5px!important;
+
+}
+
+a:hover, a:focus {
+
+color: #000 !important;
+
+}
+
+}
+
+.logout {
+
+padding-left: 0;
+
+}
+
+.nav.navbar-right {
+
+padding-bottom: 10px;
+
+padding-top: 5px;
+
+}
+
+.nav.navbar-nav {
+
+.navbar-link {
+
+border-radius: 5px;
+
+color: #fff;
+
+margin-top: 15px;
+
+padding: 8px;
+
+}
+
+.navbar-link:focus, .navbar-link:hover {
+
+background: #3071a9;
+
+color: #fff;
+
+}
+
+li a {
+
+margin-right: 5px;
+
+}
+
+}
+
+.nav.navbar-right li {
+
+.btn {
+
+color: #fff !important;
+
+margin-top: 5%;
+
+}
+
+.btn-danger:hover, .btn-danger:focus {
+
+background-color: darken(#d9534f,20%) !important;
+
+}
+
+.btn-primary:hover, .btn-primary:focus {
+
+background-color: darken(#428bca,20%) !important;
+
+}
+
+}
+
+.btn-primary:visited, .btn-danger:visited {
+
+color: #fff;
+
+}
+
+features {
+  ul {
+    margin-left: 0;
+    padding-left: 15px;
+  }
+}
+
+.jumbotron {
+  text-align: center;
+  background-image: asset-url('catchup.jpg');
+  background-size: cover;
+  color: #fff;
+  font-family: 'Helvetica Neue' !important;
+  font-stretch: expanded;
+  padding-top: 25px;
+  padding-bottom: 430px;
+  margin-left: 15px;
+  margin-right: 15px;
+  text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
+
+}
+
+.no-left-padding {
+  padding-left: 0 !important;
+}
+
+.listing {
+  list-style: none;
+  padding-left: 0;
+}
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *
+ require commontator/application*/
+//  .stats {
+//   overflow: auto;
+//   a {
+//     float: left;
+//     padding: 0 10px;
+//     border-left: 1px solid $grayLighter;
+//     color: gray;
+//     &:first-child {
+//       padding-left: 0;
+//       border: 0;
+//     }
+ 
+ .button {
+  text-transform: uppercase;
+  border-color: #4090db;
+  color: #4090db;
+  margin-left: 20px;
+  &:visited, &:focus, &:hover {
+    border-color: #2D6396;
+    color: #2D6396;
+    float: center;
+  }
+}
+
+.unfollow-button {
+  text-transform: uppercase;
+  border-color: #66bd2b;
+  background-color: #66bd2b;
+  color: white;
+  margin-left: 20px;
+  &:visited, &:focus, &:hover {
+    border-color: #47821F;
+    background-color: #47821F;
+    color: white;
+  }
+}
+@import "social-share-button";
+.message-sent {
+  position: relative;
+  background-color: #D9EDF7;
+  border-color: #BCE8F1;
+  margin: 5px 20px;
+  padding: 10px;
+  float: right;
+}
+ 
+ 
+.message-received {
+  background-color: #F1F0F0;
+  border-color: #EEEEEE;
+  margin: 5px 20px;
+  padding: 10px;
+  float: left;
+}

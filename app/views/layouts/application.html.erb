@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PhotoApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+ <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<%= render 'layouts/messages' %>
+
+
+<%= render 'layouts/navigation' %>
+
+<div class="container">
+
 <%= yield %>
+<script>
+   $('[data-message=true]').on('keypress', function(event){
+      if(event.keyCode == 13 && event.target.value!= '') {
+         App.chat.send_message(event.target.value);
+         event.target.value = '';
+         event.preventDefault();
+       }
+    });
+</script>
+</div>
+<%= debug(params) if Rails.env.development? %>
+<%= render 'layouts/footer' %>
 
 </body>
 </html>

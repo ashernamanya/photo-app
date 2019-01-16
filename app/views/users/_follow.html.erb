@@ -1,0 +1,18 @@
+<%# if logged_in? && !current_user?(@user)%>
+<% if current_user.following?(@user) %>
+  <%= link_to 'Following', relationships_path,
+                           remote: true,
+                           class: 'btn unfollow-button',
+                           id: 'unfollow-button',
+                           method: :post %>
+                           
+                           <% end %>
+  <%else%>
+    <%= link_to 'Follow', relationships_path,
+                        remote: true,
+                        class: 'btn follow-button',
+                        id: 'follow-button',
+                        method: :post %>
+                        
+
+

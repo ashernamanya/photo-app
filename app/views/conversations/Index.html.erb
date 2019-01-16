@@ -1,0 +1,54 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+<h4 align="center">
+<div class="ui segment">
+  <!--<a href="#">Inbox<span class="badge"></span></a>-->
+<h4 align="center"<button class="btn btn-primary" type="button">
+     My inbox Messages <span class="badge"></span>
+</button></h4>
+
+ <ul>
+   </br>
+ <div class="container">
+<div align="center">
+  <ul class="listing">
+    <div class="row">
+   <div class="well col-md-5 col-md-offset-4">
+      <% @conversations.each do |conversation| %>
+      <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+         <%if !conversation.unread_message_count(current_user).zero? %>
+         
+         <%#= conversation.unread_message_count(current_user) %>
+         <% end %>
+          <% if conversation.sender_id == current_user.id %></br>
+          <h5>Outgoing Messages</h5>  <% recipient = User.find(conversation.recipient_id) %>
+          <% else %>
+          </br>
+         <h5>Incoming Messages</h5> <% recipient = User.find(conversation.sender_id) %></hr>
+          <% end %></hr>
+          <%= link_to recipient.username, conversation_messages_path(conversation)%>
+          (<%= conversation.unread_message_count(current_user) %>)
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div></h4>
+</ul>
+
+
+<!--<div class="ui segment">-->
+<!--  <h3>All Users</h3>-->
+<!--  <div class="ui list">-->
+<!--    <%# @users.each do |user| %>-->
+<!--      <#% #if user.id != current_user.id %>-->
+<!--      <div class="item">-->
+<!--        <%#= user.username %> <%#= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>-->
+<!--      </div>-->
+<!--      <#% #end %>-->
+<!--    <#% #end %>-->
+<!--  </div>-->
+<!--</div>-->

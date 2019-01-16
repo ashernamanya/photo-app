@@ -1,0 +1,89 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+<h2 align="center"><%= @article.tittle %></h2>
+
+<div class="well col-xs-25 col-xs-offset-1">
+
+<% if @article.user %>
+
+<ul class="listing">
+
+<div class="row center">
+
+<div class="col-md-4 col-md-offset-4">
+
+<li>Created by:</li>
+
+<li><%#= (@article.username), user_path(@article.username) %></li>
+
+<li class="article-tittle">
+
+<%= link_to @article.user.username, user_path(@article.user) %>
+
+</li>
+
+<li><small>
+
+<%= pluralize(@article.user.articles.count, "article") if @article.user.articles %>
+
+</small></li>
+
+</div>
+
+</div>
+
+</ul>
+
+<% end %>
+
+<h4 class="center description"><strong></strong></h4>
+
+<hr>
+
+<%= simple_format(@article.description) %>
+<% if signed_in? && current_user == @article.user %>
+
+<%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
+
+<%= link_to "Delete this article", article_path(@article), method: :delete,
+
+data: { confirm: "Are you sure you want to delete the article?"},
+
+class: "btn btn-xs btn-danger" %></br>
+
+
+<% end %>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Adsales tcc -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6384517468334876"
+     data-ad-slot="5770794136"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+ <%#= social_share_button_tag('', :url => articles_path(@tittle), desc: @article.description) %>
+<%#= social_share_button_tag(@article.tittle) %> 
+
+<%#= social_share_button_tag @article.tittle, desc: @article.description %>
+<%= render partial: 'comments/form' %>
+
+<%= link_to "View all articles", articles_path, class: "btn btn-xs btn-success" %>
+
+
+<h6>Comments (<%= @article.comments.size %>)</h6>
+<%= render partial: 'comments/comment', collection: @article.comments.reverse %>
+<%#= social_share_button_tag(@article.tittle) %>
+<%#= render partial: 'post_dashboard', Articles: @articles %>
+
+
+
+</div>
+
+</div>
