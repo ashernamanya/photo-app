@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<h3> Your Recent Posts</h3>
+
+
+<% @posts.each do |post| %>
+<div class='row'>
+<div class='col-xs-8'> 
+<h4 class="center content"><strong></strong></h4>
+<%= post.content %>
+<%= link_to 'View this Post', post %>
+</div>
+</div>
+        <%#= link_to 'Edit this Post', edit_post_path(post) %>
+        
+    <% end %>
+  
+<br>
+

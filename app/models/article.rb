@@ -1,5 +1,5 @@
 class Article <ActiveRecord::Base 
-  #include PublicActivity::Common
+  include PublicActivity::Common
  
     belongs_to :user
     #has_many :article_categories

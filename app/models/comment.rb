@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
   belongs_to :article
-  #include PublicActivity::Common
+  include PublicActivity::Common
   
 end

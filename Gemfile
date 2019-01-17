@@ -37,6 +37,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'fog'
+gem "acts_as_follower"
+gem 'acts_as_votable', '~> 0.12.0'
 # group :assets do
 #   gem 'therubyracer'
 #   gem 'sass-rails', "  ~> 3.1.0"

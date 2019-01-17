@@ -3,7 +3,7 @@ def create
   @comment = Comment.new(comment_params)
   @comment.article_id = params[:article_id]
    @comment.save 
-   #@comment.create_activity :create, owner: current_user
+   @comment.create_activity :create, owner: current_user
 #  #create_notification @article, @comment
 #       respond_to do |format|
 #         format.html { redirect_to article_path }

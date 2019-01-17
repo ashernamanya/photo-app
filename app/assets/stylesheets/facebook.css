@@ -1,17 +1,17 @@
-/* custom template */
+ custom template 
 html, body {
    height: 100%;
    font-family:verdana,arial,sans-serif;
    color:#555555;
 }
 
-.nav {
-   font-family:Arial,sans-serif;
-   font-size:13px;
-}
+/*.nav {*/
+/*   font-family:Arial,sans-serif;*/
+/*   font-size:13px;*/
+/*}*/
 
 a {
-  color:#222222;
+ color:#222222;
 }
 
 a:hover {
@@ -54,17 +54,17 @@ hr {
 }
 
 .box {
-  	bottom: 0; /* increase for footer use */
+  	bottom: 0;  increase for footer use 
     left: 0;
     position: absolute;
     right: 0;
     top: 0;
     background-color:#444444;
-  /*
-    background-image:url('/assets/example/bg_suburb.jpg');
+  
+    background-image:url('/assets/example/bg_4.jp');
     background-size:cover;
     background-attachment:fixed;
-  */
+  
 }
 
 .divider {
@@ -73,7 +73,7 @@ hr {
 
 .navbar-blue {
     border-width:0;
-	background-color:#3B5999;
+	background-color:green;
     color:#ffffff;
     font-family:arial,sans-serif;
     top:0;
@@ -82,10 +82,10 @@ hr {
 }
 
 .navbar-blue li > a,.navbar-toggle  {
-   color:#efefef;
+   color:white;
 }
 
-.navbar-blue .dropdown-menu li a {color:#2A4888;}
+.navbar-blue .dropdown-menu li a {color:white;}
 .navbar-blue .dropdown-menu li > a {padding-left:30px;}
 
 .navbar-blue li>a:hover, .navbar-blue li>a:focus, .navbar-blue .open, .navbar-blue .open>a, .navbar-blue .open>a:hover, .navbar-blue .open>a:focus {
@@ -111,12 +111,12 @@ hr {
 
 #sidebar, #sidebar a, #sidebar-footer a {
     color:#ffffff;
-    background-color:transparent;
+    background-color:purple;
 	text-shadow:0 0 2px #000000;
     padding-left:5px;
 }
 #sidebar .nav li>a:hover {
-    background-color:#393939;
+    background-color:purple;
 }
 
 .logo {
@@ -137,7 +137,7 @@ hr {
   border-radius:2px;
 }
 #sidebar-footer {
-  background-color:#444;
+  background-color:green;
   position:absolute;
   bottom:5px;
   padding:5px;
@@ -146,7 +146,7 @@ hr {
   margin-bottom:20px;
 }
 
-/* bootstrap overrides */
+ bootstrap overrides 
 
 h1,h2,h3 {
    font-weight:800;
@@ -236,7 +236,7 @@ small.text-muted {
   font-family:courier,courier-new,monospace;
 }
 
-/* adjust the contents on smaller devices */
+ adjust the contents on smaller devices 
 @media (max-width: 768px) {
 
   .column .padding {
@@ -248,7 +248,7 @@ small.text-muted {
   }
 
   .navbar-blue {
-	background-color:#3B5999;
+	background-color:purple;
     top:0;
     width:100%;
     position:relative;
@@ -257,10 +257,8 @@ small.text-muted {
 }
 
 
-/*
- * off canvas sidebar
- * --------------------------------------------------
- */
+
+ 
 @media screen and (max-width: 768px) {
   .row-offcanvas {
     position: relative;
