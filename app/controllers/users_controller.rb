@@ -1,20 +1,130 @@
 class UsersController < ApplicationController
+before_action :set_user, only: [:edit, :update, :show, :followers, :following]
 
-#def index
-#redirect_to welcome_path
-#end 
+def index
+ @users = User.all
+end
 
-# def new
-#   @user = User.new(:invitation_token => params[:invitation_token])
+def show
+ @user = User.find(params[:id])
+ @user_tweets = @user.tweets.paginate(page: params[:page], per_page: 5)
+end
+
+def followers
+  @user = User.find(params[:id])
+     @followers = @user.followers(User)
+     @users = User.paginate(page: params[:page], per_page: 5)
+
+     response = {:user => @user, :followers => @followers, :users => @users}
+
+     respond_to do |format|
+      format.html  #followers.html.erb
+      format.xml {render :xml => response}
+    end
+end
+
+def following
+ @user = User.find(params[:id])
+     @following = @user.followers(User)
+    @users = User.paginate(page: params[:page], per_page: 5)
+
+     response = {:user => @user, :following => @following, :users => @users}
+
+     respond_to do |format|
+      format.html  #following.html.erb
+      format.xml {render :xml => response}
+    end
+end 
+
+
+def show_followers
+@user = User.find(params[:id])
+     @following = @user.followers(User)
+    @users = User.paginate(page: params[:page], per_page: 5).order('RANDOM()').limit(5)
+
+     response = {:user => @user, :following => @following, :users => @users}
+
+     respond_to do |format|
+      format.html  #following.html.erb
+      format.xml {render :xml => response}
+    end
+end  
+
+def destroy
+
+@user = User.find(params[:id])
+
+@user.destroy
+
+flash[:danger] = "User and all articles created by user have been deleted"
+
+redirect_to users_path
+end
+
+ def search
+    @user = User.all.order('RANDOM()').limit(5)
+   
+  end
+  
+def online?
+    if current_logged_in_at.present? 
+      last_sign_out_at.present? ? current_sign_in_at > 
+
+last_sign_out_at : true
+    else
+      false
+    end
+end 
+
+
+private
+
+def user_params
+
+params.require(:user).permit(:username, :country, :email, :password)
+
+end
+
+def set_user
+
+@user = User.find(params[:id])
+end 
+
+def set_follower
+ @user=User.find(params[:id])
+
+end
+
+# def require_same_user
+
+# if current_user != @user and !current_user.admin?
+
+# flash[:danger] = "You can only edit your own account"
+
+# redirect_to root_path
+
+# end
 
 # end
 
 
-# def my_portfolio
-#     @user_stocks = current_user.stocks
-#     @user = current_user
-#   end
-  
+#def set_user
+    #@user = User.find_by(username: params[:username])
+    
+
+# def require_admin
+
+# if logged_in? and !current_user.admin?
+
+# flash[:danger] = "Only admin users can perform that action"
+
+# redirect_to root_path
+
+# end
+# end 
+# end 
+# end 
+
   def my_friends
     @friendships = current_user.friends
   end
@@ -38,17 +148,10 @@ class UsersController < ApplicationController
       redirect_to my_friends_path, flash[:error] = "There was an error with adding user as friend"
     end
   end
-  
-  def show
-    @user = User.find(params[:id])
+ 
     #@user_stocks = @user.stocks
   end
 end
 
-private
 
-def generate_token
-   self.token = Digest::SHA1.hexdigest([Time.now, rand].join)
-   (SecureRandom.random_number(9e5) + 1e5).to_i
-    end
 

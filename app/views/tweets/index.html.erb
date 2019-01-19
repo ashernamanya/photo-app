@@ -1,0 +1,11 @@
+<ul>
+ <% @tweets.reverse.each do |tweet| %>
+ <strong><%= link_to tweet.user.username, user_path(tweet.user_id) %></strong>
+ <%= tweet.created_at.strftime(“%d %b %Y at %I:%M %p”) %>
+ <p><%= tweet.content %></p>
+ <h3>Current User: <%= @tweets.first.user.username %></h3>
+<h3>Create New Tweet: <%= link_to “New Recipe”, new_tweet_path(@tweets) %></h3>
+ — — — — — — — — — — — — — — — — — — — — — — — — — — — -
+ <br><br>
+ <% end %>
+</ul>

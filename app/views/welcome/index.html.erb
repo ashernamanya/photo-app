@@ -1,11 +1,10 @@
 <% if current_user %>
-
-  <h3>Welcome: <%= current_user.email %></h3>
-  <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
         <meta charset="utf-8">
-        <title>KAATCH-UP</title>
+        <title>Facebook Theme Demo</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href="assets/css/bootstrap.css" rel="stylesheet">
         <!--[if lt IE 9]>
@@ -28,14 +27,14 @@
 						</ul>
 					   
 						<ul class="nav hidden-xs" id="lg-menu">
-							<li class="active"><a href="#featured"><i class="glyphicon glyphicon-list-alt"></i> Featured</a></li>
-							<li><a href="<%activities_path %>"><i class="glyphicon glyphicon-list"></i>Notifications</a></li>
-							<li><a href="#"><i class="glyphicon glyphicon-paperclip"></i> Saved</a></li>
-							<li><a href="#"><i class="glyphicon glyphicon-refresh"></i> Refresh</a></li>
+							<li class="active"><a href="/posts"><i class="glyphicon glyphicon-list-alt"></i>News Feed</a></li>
+							<li><a href="#stories"><i class="glyphicon glyphicon-list"></i> Messages</a></li>
+							<li><a href="#"><i class="glyphicon glyphicon-paperclip"></i> Notifications</a></li>
+							<li><a href="/users/show"><i class="glyphicon glyphicon-refresh"></i> Profile</a></li>
 						</ul>
 						<ul class="list-unstyled hidden-xs" id="sidebar-footer">
 							<li>
-							  <a href="#"><h3>Groups</h3> <i class="glyphicon glyphicon-heart-empty"></i> Create a Group</a>
+							  <a href="http://usebootstrap.com/theme/facebook"><h3>Bootstrap</h3> <i class="glyphicon glyphicon-heart-empty"></i> Bootply</a>
 							</li>
 						</ul>
 					  
@@ -62,7 +61,7 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							  </button>
-							  <a href="http://usebootstrap.com/theme/facebook" class="navbar-brand logo">K</a>
+							  <a href="<% root_url%>" class="navbar-brand logo">K</a>
 							</div>
 							<nav class="collapse navbar-collapse" role="navigation">
 							<form class="navbar-form navbar-left">
@@ -75,38 +74,20 @@
 							</form>
 							<ul class="nav navbar-nav">
 							  <li>
-								<a href="<%my_friends_path%>"<i class="glyphicon glyphicon-friends"></i>Profile</a>
+								<a href="<% root_url%>"><i class="glyphicon glyphicon-home"></i> Home</a>
 							  </li>
 							  <li>
-							  	
-								<a href="/posts/new" role="button" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i> Post</a>
+								<a href="/tweets/new" role="button" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i> Post</a>
 							  </li>
 							  <li>
-							 
-							 
-      <ul class="nav navbar-nav">
-        <ul class="nav nav-pills" role="tablist">
-       <% if signed_in? %>
-           <li><%= link_to 'Log out',destroy_user_session_path , method: :delete %></li>
-         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Your Profile <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><%= link_to "Edit your profile", edit_user_path(current_user) %></li>
-           <li><%= link_to "View your profile", user_path(current_user) %></li>
-           </ul>
-         </li>
-         <% else %>
-       
-                                     <li><%= link_to 'Sign in',new_user_session_path %></li>
-
-                                     <li><%= link_to 'Create an Account', new_user_registration_path %></li>
-           
-  
-          <%end %>
-</ul>
-</li>
-      </ul>
-							  </li>
-							</ul>
+							   <% if user_signed_in? %>
+                              <li><%= link_to('Sign out', destroy_user_session_path, method: :delete) %></li>
+                              <% else %>
+         
+                              <% end %>
+							
+	
+         
 							<ul class="nav navbar-nav navbar-right">
 							  <li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i></a>
@@ -122,70 +103,50 @@
 							</nav>
 						</div>
 						<!-- /top nav -->
-					  
-						<div class="padding">
-							<div class="full col-sm-9">
-							  
-								<!-- content -->                      
-								<div class="row">
-								  
-								 <!-- main col left --> 
-								 <div class="col-sm-5">
+					       
 								   
 									  <div class="panel panel-default">
-										<div class="panel-thumbnail"><img src="/images/bg_5.jpg" class="img-responsive"></div>
-										<div class="panel-body">
-										  <p class="lead">KAATCH-UP Followers</p>
-										  <p>45 Followers, 13 Posts</p>
-										  
-										  <p>
-											<img src="assets/img/uFp_tsTJboUY7kue5XAsGAs28.png" height="28px" width="28px">
-										  </p>
-										</div>
-									  </div>
-
-								   
-									  <div class="panel panel-default">
-										<div class="panel-heading"><a href="/posts" class="pull-right">View all</a> <h4>Recent Posts</h4></div>
+										<div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Bootstrap Examples</h4></div>
 										  <div class="panel-body">
-											<!--<div class="list-group">-->
-											<!--  <a href="http://usebootstrap.com/theme/facebook" class="list-group-item">Modal / Dialog</a>-->
-											<!--  <a href="http://usebootstrap.com/theme/facebook" class="list-group-item">Datetime Examples</a>-->
-											<!--  <a href="http://usebootstrap.com/theme/facebook" class="list-group-item">Data Grids</a>-->
-											<!--</div>-->
-										  </div>
-									  </div>
-								   
-									  <div class="well"> 
-										   <form class="form-horizontal" role="form">
-											<h4>What's New</h4>
-											 <div class="form-group" style="padding:14px;">
-											  <textarea class="form-control" placeholder="Update your status"></textarea>
+											<div class="list-group">
+											  <a href="http://usebootstrap.com/theme/facebook" class="list-group-item">Modal / Dialog</a>
+											  <a href="http://usebootstrap.com/theme/facebook" class="list-group-item">Datetime Examples</a>
+											  <a href="http://usebootstrap.com/theme/facebook" class="list-group-item">Data Grids</a>
 											</div>
-										<a href="/posts/new" role="button" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i> Post</a>
+										  </div>
 									  </div>
-								   
-									  <div class="panel panel-default">
-										 <div class="panel-heading"><a href="/posts" class="pull-right">View all</a> <h4>More Posts</h4></div>
-										  <div class="panel-body">
-											<img src="assets/img/150x150.gif" class="img-circle pull-right"> <a href="#">Free @Bootply</a>
-											<div class="clearfix"></div>
-											<%# @posts.each do |post| %>
-									      	 <%#= post.content %>
-									      	 
+								 
+									    
+									    
+									   
+								    <%= render 'tweets/form' %>
 
-											<hr>
-											<ul class="list-unstyled"><li><a href="http://usebootstrap.com/theme/facebook">Dashboard</a></li><li><a href="http://usebootstrap.com/theme/facebook">Darkside</a></li><li><a href="http://usebootstrap.com/theme/facebook">Greenfield</a></li></ul>
+									
+									  <div class="panel panel-default">
+										 <div class="panel-heading"><a href="#" class="pull-right"></a> <h4>Recipes</h4></div>
+										  <div class="panel-body">
+											<div class="clearfix"></div>
+										   <%#= render template: "tweets/show.html.erb" layout: false %>
+										   <%= render template: "tweets/show" %>
+										   <%#=render :controller  => "tweets",:action => "show" %>
+										   <%#=render "/path/to/rails/app/views/tweets/show.html.erb" %>
+										    <%#= render file: "/path/to/rails/app/views/tweets/show.html.erb" %>
+						<ul class="list-unstyled"><li><a href="http://usebootstrap.com/theme/facebook">Dashboard</a></li><li><a href="http://usebootstrap.com/theme/facebook">Darkside</a></li><li><a href="http://usebootstrap.com/theme/facebook">Greenfield</a></li></ul>
 										  </div>
 									  </div>
 								   
 									  <div class="panel panel-default">
-										<div class="panel-heading"><h4>POSTS</h4></div>
+										<div class="panel-heading"><h4>What Is Bootstrap?</h4></div>
 										<div class="panel-body">
-											 </div>
+											Bootstrap is front end frameworkto 
+		build custom web applications that are fast, responsive &amp; intuitive.
+		 It consist of CSS and HTML for typography, forms, buttons, tables, 
+		grids, and navigation along with custom-built jQuery plug-ins and 
+		support for responsive layouts. With dozens of reusable components for 
+		navigation, pagination, labels, alerts etc..                          </div>
 									  </div>
 
-		
+										
 								   
 								  </div>
 								  
@@ -194,9 +155,9 @@
 									   
 										<div class="well"> 
 										   <form class="form">
-											<h4>Create AD</h4>
+											<h4>Sign-up</h4>
 											<div class="input-group text-center">
-											<input class="form-control input-lg" placeholder="You Can share anything you want" type="text">
+											<input class="form-control input-lg" placeholder="Enter your email address" type="text">
 											  <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">OK</button></span>
 											</div>
 										  </form>
@@ -208,64 +169,12 @@
 											<p><img src="assets/img/150x150.gif" class="img-circle pull-right"> <a href="#">The Bootstrap Playground</a></p>
 											<div class="clearfix"></div>
 											<hr>
-										<div id="friend-lookup"> 
-  <h4>Look for friends</h4>
-  <%= form_tag search_friends_path, remote: true, method: :get, id: 'friend-lookup-form' do %>
-  <div class="form-group row no-padding text-center col-md-13">
-    <div class="col-md-10">
-      <%= text_field_tag :search_param, params[:search_param], 
-                                  placeholder: "first name, last name or email", autofocus: true,
-                                  class: 'form-control search-box input-lg' %>
-    </div>
-    <div class="col-md-1">
-      <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
-        <i class="fa fa-search"></i>search
-      <% end %>
-    </div>
-  </div>
-  <% end %>
-  <p> Note: Refresh your browser if you fail to search and try again</p>
-  <%= render 'common/spinner' %>
-  <% if @users %>
-    <% if @users.size > 0 %>
-      <div id="friend-lookup-results" class="well results-block col-md-10">
-        <table class="search-results-table col-md-12">
-          <tbody>
-            <% @users.each do |user| %>
-            <tr>
-              <td><strong>Name:</strong> <%= user.full_name %></td>
-              <td><strong>Email:</strong> <%= user.email %></td>
-              <td><strong>Profile:</strong> <%= link_to "View Profile", user_path(user),
-                                                        class: "btn btn-xs btn-success" %>
-                <% if current_user.not_friends_with?(user.id) %>
-                 <%= link_to "Add as my friend", add_friend_path(user: current_user, friend: user),
-                                                    class: "btn btn-xs btn-success", method: :post %>
-                   
-                  
-                <% else %>
-                  <span class="label label-primary">
-                    You are friends
-                  </span>
-                <% end %>
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    <% else %>
-      <p class="lead col-md-12">
-        No user matches your search, try again please
-      </p>
-    <% end %>
-  <% end %>
-  <div id="friend-lookup-errors"></div>
-</div>
+		                               
 										  </div>
 									   </div>
 									
 									   <div class="panel panel-default">
-										 <div class="panel-heading"><a href="users/friends" class="pull-right">Search for a friend</a> <h4>Add poeple You may know</h4></div>
+										 <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Stackoverflow</h4></div>
 										  <div class="panel-body">
 											<img src="assets/img/150x150.gif" class="img-circle pull-right"> <a href="#">Keyword: Bootstrap</a>
 											<div class="clearfix"></div>
@@ -351,29 +260,7 @@
 
 
 		<!--post modal-->
-		<div id="postModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-		  <div class="modal-dialog">
-		  <div class="modal-content">
-			  <div class="modal-header">
-				  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">�</button>
-					Update Status
-			  </div>
-			  <div class="modal-body">
-				  <form class="form center-block">
-					<div class="form-group">
-					  <textarea class="form-control input-lg" autofocus="" placeholder="What do you want to share?"></textarea>
-					</div>
-				  </form>
-			  </div>
-			  <div class="modal-footer">
-				  <div>
-				  <button class="btn btn-primary btn-sm" data-dismiss="modal" aria-hidden="true">Post</button>
-					<ul class="pull-left list-inline"><li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li><li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li><li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li></ul>
-				  </div>	
-			  </div>
-		  </div>
-		  </div>
-		</div>
+	
         
         <script type="text/javascript" src="assets/js/jquery.js"></script>
         <script type="text/javascript" src="assets/js/bootstrap.js"></script>
@@ -389,9 +276,10 @@
 			});
         });
         </script>
-  
-  <%else%>
-  <div class="center jumbotron">
+</body></html>
+        <% else %>
+            
+<div class="center jumbotron">
   <h1>KAATCH-UP </h1>
   
    <h2>LET'S KAATCH-UP AND DO AMAZING STUFF</h2>
@@ -401,7 +289,9 @@
   </br>
   </br>
  <%= link_to "Register Now","/users/sign_up", class: "btn btn-primary btn-lg" %>
- 
+ </br>
+  <h4> or </h4>
+ <%= link_to 'Login ',"/users/sign_in", class: "btn btn-primary btn-lg" %>
         </p>
       </div>
       </div>
@@ -409,3 +299,4 @@
   </div>
 <% end %>
 
+</body></html>

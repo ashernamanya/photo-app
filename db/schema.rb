@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190117144840) do
+ActiveRecord::Schema.define(version: 20190118154044) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -86,6 +86,13 @@ ActiveRecord::Schema.define(version: 20190117144840) do
 
   add_index "images", ["user_id"], name: "index_images_on_user_id"
 
+  create_table "likes", force: :cascade do |t|
+    t.integer  "tweet_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text     "body"
     t.integer  "conversation_id"
@@ -126,6 +133,13 @@ ActiveRecord::Schema.define(version: 20190117144840) do
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
+
+  create_table "tweets", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

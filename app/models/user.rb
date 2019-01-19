@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
    #include Gravtastic # this is for the Image at Gravtor
 #gravtastic
+# has_many :followers, :class_name => “Relationship”, :foreign_key => “user_id”
+# has_many :following, :class_name => “Relationship”, :foreign_key => “follower_id”
+has_many :tweets
+has_many :posts, dependent: :destroy
  devise :database_authenticatable, :registerable, 
          :confirmable,
          :recoverable, :rememberable, :validatable
@@ -15,12 +19,12 @@ class User < ActiveRecord::Base
 accepts_nested_attributes_for :payment 
 
     #attr_accessible :email, :password
-has_many :articles, dependent: :destroy
+
 #has_many :relationships, foreign_key: "follower_id", dependent: :destroy
 has_many :conversations, :foreign_key => :sender_id
 
- has_many :active_relationships, foreign_key: "follower_id", class_name:  "Relationship", dependent:  :destroy
- has_many :passive_relationships, foreign_key: "followed_id", class_name:  "Relationship", dependent: :destroy
+has_many :active_relationships, foreign_key: "follower_id", class_name:  "Relationship", dependent:  :destroy
+has_many :passive_relationships, foreign_key: "followed_id", class_name:  "Relationship", dependent: :destroy
  
  has_many :following, through: :active_relationships, source: :followed
  

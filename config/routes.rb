@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'tweets/create'
+
   resources :posts
   resources :images
   #devise_for :users
@@ -19,6 +21,7 @@ devise_for :users # :controllers => { :registrations => 'registrations' }
   # get 'login', to: 'sessions#new'
   # post 'login', to: 'sessions#create'
   # delete 'logout', to: 'sessions#destroy'
+resources :tweets, only: [:new, :create, :show]
 resources :articles do
    member do
    get:suggestions
